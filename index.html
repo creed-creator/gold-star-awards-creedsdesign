@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold Star Awards & Engraving — Layton, Utah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1F35;
+    --navy-mid: #162C48;
+    --navy-light: #1E3A58;
+    --gold: #C8960A;
+    --gold-light: #E8B020;
+    --gold-pale: #FBF0D3;
+    --cream: #FAF8F4;
+    --warm-white: #FFFDF9;
+    --text: #1A1A1A;
+    --text-muted: #6B6560;
+    --text-light: #A09890;
+    --border: rgba(0,0,0,0.08);
+    --border-gold: rgba(200,150,10,0.25);
+    --r-sm: 6px;
+    --r-md: 12px;
+    --r-lg: 20px;
+    --r-xl: 32px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── UTILITY ─── */
+  .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+  .serif { font-family: 'Playfair Display', serif; }
+  .gold { color: var(--gold); }
+
+  /* ─── TOP BAR ─── */
+  .topbar {
+    background: var(--navy);
+    padding: 0.55rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .topbar a, .topbar span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.72);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+  }
+  .topbar a:hover { color: var(--gold-light); }
+  .topbar-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.25); }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(255,253,249,0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    gap: 1rem;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo-star {
+    width: 36px; height: 36px;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .nav-logo-text { line-height: 1.2; }
+  .nav-logo-text .line1 { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--navy); }
+  .nav-logo-text .line2 { font-size: 10px; font-weight: 300; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: var(--r-sm);
+    transition: all 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); background: rgba(0,0,0,0.04); }
+  .nav-links a.active { color: var(--navy); font-weight: 500; }
+
+  .nav-cta {
+    background: var(--navy);
+    color: #fff !important;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 9px 18px;
+    border-radius: var(--r-sm);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover { background: var(--navy-light); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: var(--r-sm);
+    transition: background 0.15s;
+  }
+  .hamburger:hover { background: rgba(0,0,0,0.05); }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text); transition: all 0.25s; transform-origin: center; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--warm-white);
+    z-index: 199;
+    padding: 90px 1.5rem 2rem;
+    flex-direction: column;
+    gap: 0;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .mobile-nav.open { transform: translateX(0); }
+  .mobile-nav a {
+    font-size: 22px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    color: var(--navy);
+    text-decoration: none;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    display: block;
+  }
+  .mobile-nav a:hover { color: var(--gold); }
+  .mobile-nav .mobile-cta {
+    margin-top: 1.5rem;
+    background: var(--navy);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 1rem 1.5rem;
+    border-radius: var(--r-md);
+    text-align: center;
+    border-bottom: none;
+  }
+  .mobile-nav .mobile-address {
+    margin-top: 1.5rem;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    border-bottom: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    padding: 5rem 1.25rem 4rem;
+  }
+  .hero-bg-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,1) 40px, rgba(255,255,255,1) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,1) 40px, rgba(255,255,255,1) 41px);
+  }
+  .hero-glow {
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,150,10,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(200,150,10,0.15);
+    border: 1px solid rgba(200,150,10,0.3);
+    border-radius: 99px;
+    padding: 5px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold-light);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold-light); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.12;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
+  .hero-desc {
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px 26px;
+    border-radius: var(--r-sm);
+    text-decoration: none;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 13px 26px;
+    border-radius: var(--r-sm);
+    border: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: all 0.15s;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
+
+  /* Hero visual panel */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--r-lg);
+    padding: 1.25rem 1.5rem;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.2s;
+  }
+  .hero-stat-card:hover { transform: translateX(-4px); }
+  .hero-stat-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .icon-gold { background: rgba(200,150,10,0.2); }
+  .icon-blue { background: rgba(100,150,255,0.15); }
+  .icon-green { background: rgba(80,180,120,0.15); }
+  .icon-purple { background: rgba(160,100,220,0.15); }
+  .hero-stat-label { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 2px; }
+  .hero-stat-val { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; }
+
+  /* ─── TRUST STRIP ─── */
+  .trust-strip {
+    background: var(--gold-pale);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 0.85rem 1.25rem;
+    overflow: hidden;
+  }
+  .trust-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #7A5C00;
+    white-space: nowrap;
+  }
+  .trust-item svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  /* ─── SERVICES ─── */
+  .section { padding: 5rem 1.25rem; }
+  .section-cream { background: var(--cream); }
+  .section-white { background: var(--warm-white); }
+
+  .section-header { margin-bottom: 3rem; }
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-eyebrow::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .section-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 520px;
+  }
+
+  /* Services grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .service-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 2rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .service-card:hover::before { opacity: 1; }
+  .service-card.featured {
+    background: var(--navy);
+    border-color: transparent;
+    grid-column: span 1;
+  }
+  .service-card.featured::before { opacity: 1; }
+  .service-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 1.25rem;
+    background: var(--gold-pale);
+  }
+  .service-card.featured .service-icon { background: rgba(200,150,10,0.2); }
+  .service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .service-card.featured .service-title { color: #fff; }
+  .service-desc {
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  .service-card.featured .service-desc { color: rgba(255,255,255,0.6); }
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 99px;
+    background: var(--gold-pale);
+    color: #7A5C00;
+    border: 1px solid var(--border-gold);
+  }
+  .service-card.featured .tag {
+    background: rgba(200,150,10,0.2);
+    color: var(--gold-light);
+    border-color: rgba(200,150,10,0.3);
+  }
+  .service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: gap 0.15s;
+  }
+  .service-link:hover { gap: 8px; }
+
+  /* ─── STORY / ABOUT ─── */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .story-text p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+  .story-text p strong { font-weight: 500; color: var(--text); }
+  .story-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .story-stat {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 1.25rem;
+  }
+  .story-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .story-stat-num sup { font-size: 18px; }
+  .story-stat-label { font-size: 12px; font-weight: 400; color: var(--text-muted); line-height: 1.4; }
+
+  /* Story visual */
+  .story-visual {
+    position: relative;
+  }
+  .story-card-stack {
+    position: relative;
+    padding: 1rem;
+  }
+  .story-main-card {
+    background: var(--navy);
+    border-radius: var(--r-xl);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-main-card::before {
+    content: '★';
+    position: absolute;
+    right: -20px; top: -20px;
+    font-size: 130px;
+    color: rgba(255,255,255,0.03);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .story-card-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
+  }
+  .story-card-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+  }
+  .story-card-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .story-card-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+  }
+  .story-card-check {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: rgba(200,150,10,0.25);
+    color: var(--gold-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  /* ─── MISSION PLAQUE CTA ─── */
+  .mission-section {
+    background: var(--gold-pale);
+    border-top: 1px solid var(--border-gold);
+    border-bottom: 1px solid var(--border-gold);
+    padding: 4rem 1.25rem;
+  }
+  .mission-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  .mission-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .mission-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 0.75rem;
+  }
+  .mission-desc {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 480px;
+  }
+  .mission-action { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .btn-navy {
+    background: var(--navy);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 14px 28px;
+    border-radius: var(--r-sm);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-navy:hover { background: var(--navy-light); transform: translateY(-1px); }
+  .mission-note {
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* ─── PRODUCT CATEGORIES ─── */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  .cat-card {
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 1.75rem 1.25rem;
+    background: var(--warm-white);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.07); border-color: var(--border-gold); }
+  .cat-emoji { font-size: 28px; margin-bottom: 1rem; display: block; }
+  .cat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .cat-desc { font-size: 12.5px; font-weight: 300; color: var(--text-muted); line-height: 1.65; margin-bottom: 1rem; }
+  .cat-arrow {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.15s;
+  }
+  .cat-card:hover .cat-arrow { gap: 7px; }
+
+  /* ─── WHAT WE ENGRAVE ─── */
+  .engrave-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .engrave-item {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 0.85rem 1rem;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .engrave-item:hover { border-color: var(--border-gold); color: var(--text); }
+  .engrave-bullet {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .testimonial-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 1.75rem;
+    transition: transform 0.2s;
+  }
+  .testimonial-card:hover { transform: translateY(-3px); }
+  .testimonial-stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+  .testimonial-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--navy);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+  .testimonial-author {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .testimonial-avatar {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+    border: 1px solid var(--border-gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7A5C00;
+    flex-shrink: 0;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .contact-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 2rem;
+    margin-bottom: 1rem;
+  }
+  .contact-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 1.25rem;
+  }
+  .contact-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+  }
+  .contact-icon {
+    width: 32px; height: 32px;
+    background: var(--gold-pale);
+    border-radius: var(--r-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .contact-detail { font-size: 13.5px; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+  .contact-detail a { color: var(--navy); font-weight: 500; text-decoration: none; }
+  .contact-detail a:hover { color: var(--gold); }
+
+  .hours-table { width: 100%; }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-day { color: var(--text-muted); font-weight: 300; }
+  .hours-time { font-weight: 500; color: var(--navy); }
+  .hours-closed { color: var(--text-light); font-weight: 300; }
+
+  .map-embed {
+    width: 100%;
+    height: 280px;
+    border-radius: var(--r-xl);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background: #e8e4e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  .map-placeholder {
+    text-align: center;
+    padding: 2rem;
+  }
+  .map-placeholder p { font-size: 13px; color: var(--text-muted); margin-top: 0.5rem; }
+  .map-placeholder a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    text-decoration: none;
+    margin-top: 0.75rem;
+    padding: 8px 16px;
+    background: var(--warm-white);
+    border-radius: var(--r-sm);
+    border: 1px solid var(--border);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    padding: 3rem 1.25rem 1.5rem;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 1.5rem;
+  }
+  .footer-brand .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .footer-brand .footer-logo span { color: var(--gold-light); }
+  .footer-brand p {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+    margin-top: 0.75rem;
+    max-width: 280px;
+  }
+  .footer-since {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-top: 1rem;
+    font-weight: 500;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1rem;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    margin-bottom: 0.6rem;
+    transition: color 0.15s;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .footer-bottom p { font-size: 12px; font-weight: 300; color: rgba(255,255,255,0.35); }
+
+  /* ─── MOBILE FIRST ─── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-cta.desktop-only { display: none; }
+    .hamburger { display: flex; }
+
+    .mobile-nav { display: flex; }
+
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+
+    .services-grid { grid-template-columns: 1fr 1fr; }
+    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .categories-grid { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 0; }
+    .engrave-list { grid-template-columns: 1fr 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
+    .mission-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .mission-action { align-items: flex-start; }
+    .story-stats { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .topbar { gap: 1rem; }
+    .topbar-dot { display: none; }
+    .hero h1 { font-size: 32px; }
+    .hero-visual { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .engrave-list { grid-template-columns: 1fr; }
+    .section { padding: 3.5rem 1.25rem; }
+    .story-stats { grid-template-columns: 1fr 1fr; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .hero-btns { flex-direction: column; }
+    .hero-btns a { text-align: center; justify-content: center; }
+    .trust-inner { gap: 1rem; }
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    animation: fadeUp 0.6s ease both;
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.2s; }
+  .delay-3 { animation-delay: 0.3s; }
+  .delay-4 { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="tel:8015447404">📞 801-544-7404</a>
+  <span class="topbar-dot"></span>
+  <span>55 E. Gentile St, Layton UT 84041</span>
+  <span class="topbar-dot"></span>
+  <span>Mon–Fri · 9:00 AM – 5:30 PM</span>
+  <span class="topbar-dot"></span>
+  <span>Rush service available</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-star">⭐</div>
+      <div class="nav-logo-text">
+        <div class="line1">Gold Star Awards</div>
+        <div class="line2">Utah's Trophy Shop</div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#mission">Mission Plaques</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="tel:8015447404" class="nav-cta desktop-only">Call to Order</a>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#services" onclick="closeMenu()">Services</a>
+  <a href="#products" onclick="closeMenu()">Products</a>
+  <a href="#about" onclick="closeMenu()">About Us</a>
+  <a href="#mission" onclick="closeMenu()">Mission Plaques</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <a href="tel:8015447404" class="mobile-cta">📞 Call 801-544-7404</a>
+  <span class="mobile-address">Gold Star Awards & Engraving<br>55 E. Gentile Street, Layton, UT 84041<br>Mon–Fri · 9:00 AM – 5:30 PM</span>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner container">
+    <div class="hero-content">
+      <div class="hero-eyebrow fade-up">
+        <span class="hero-eyebrow-dot"></span>
+        Serving northern Utah since 1985
+      </div>
+      <h1 class="fade-up delay-1">Awards that <em>Honor</em><br>every achievement.</h1>
+      <p class="hero-desc fade-up delay-2">Gold Star Awards & Engraving — Layton's trusted source for custom trophies, crystal, acrylic, engraved drinkware, and mission plaques. Rush service always available.</p>
+      <div class="hero-btns fade-up delay-3">
+        <a href="tel:8015447404" class="btn-gold">📞 Call to Order</a>
+        <a href="#products" class="btn-outline">Browse Products</a>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-up delay-2">
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon icon-gold">🏆</div>
+        <div>
+          <div class="hero-stat-label">Specialty</div>
+          <div class="hero-stat-val">Trophies & Medals</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon icon-blue">💎</div>
+        <div>
+          <div class="hero-stat-label">Premium</div>
+          <div class="hero-stat-val">Crystal & Glass</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon icon-green">✍️</div>
+        <div>
+          <div class="hero-stat-label">Craft</div>
+          <div class="hero-stat-val">Laser Engraving</div>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon icon-purple">🪪</div>
+        <div>
+          <div class="hero-stat-label">Popular</div>
+          <div class="hero-stat-val">Mission Plaques</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1-3-2.9 4.2-.8L8 1z" fill="#C8960A"/></svg>
+      4.6 Stars · 36 Reviews
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="#C8960A"><circle cx="8" cy="8" r="7" stroke="#C8960A" stroke-width="1.5" fill="none"/><path d="M5 8l2 2 4-4" stroke="#C8960A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Rush Service Available
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="#C8960A"><path d="M8 1C4.13 1 1 4.13 1 8s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 12.6A5.6 5.6 0 1 1 8 2.4a5.6 5.6 0 0 1 0 11.2z" fill="#C8960A"/><path d="M8.7 4.7H7.3v4l3.5 2.1.7-1.1-3-1.8V4.7z" fill="#C8960A"/></svg>
+      In-House Engraving
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M2 2h12v12H2z" stroke="#C8960A" stroke-width="1.5" fill="none"/><path d="M5 8h6M8 5v6" stroke="#C8960A" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Bulk Orders Welcome
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l2 5h5l-4 3 1.5 5L8 11l-4.5 3L5 9 1 6h5z" stroke="#C8960A" stroke-width="1.4" stroke-linejoin="round"/></svg>
+      Serving Utah Since 1985
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="section section-cream" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">What we do</div>
+      <h2 class="section-title">Full-service awards<br>& engraving studio</h2>
+      <p class="section-sub">From concept to completion — we handle everything in-house with laser precision and genuine care for every order, big or small.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card featured">
+        <div class="service-icon">✍️</div>
+        <div class="service-title">Custom Engraving</div>
+        <div class="service-desc">Laser, computer, machine, and print engraving on metal, plastic, wood, glass, acrylic, crystal, and silver. If you can imagine it, we can engrave it.</div>
+        <div class="service-tags">
+          <span class="tag">Laser</span>
+          <span class="tag">Metal</span>
+          <span class="tag">Wood</span>
+          <span class="tag">Glass</span>
+        </div>
+        <a href="tel:8015447404" class="service-link">Get a quote →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏆</div>
+        <div class="service-title">Trophies & Awards</div>
+        <div class="service-desc">Sports teams, corporate recognition, academic excellence — we carry a vast selection of trophies, medals, ribbons, plaques, statues, and more.</div>
+        <div class="service-tags">
+          <span class="tag">Sports</span>
+          <span class="tag">Corporate</span>
+          <span class="tag">Academic</span>
+        </div>
+        <a href="#products" class="service-link">Browse awards →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-title">Signs & Banners</div>
+        <div class="service-desc">Full color and engraved banners, plastic and metal signage, lasered wood signs, and printed metal — for businesses, events, and organizations.</div>
+        <div class="service-tags">
+          <span class="tag">Banners</span>
+          <span class="tag">Signage</span>
+          <span class="tag">Full Color</span>
+        </div>
+        <a href="tel:8015447404" class="service-link">Learn more →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🎁</div>
+        <div class="service-title">Promotional Products</div>
+        <div class="service-desc">Name it, we'll imprint it. We've engraved waffle irons, fishing lures, toasters, decanter sets — unique branded gifts people actually keep.</div>
+        <div class="service-tags">
+          <span class="tag">Custom</span>
+          <span class="tag">Branded</span>
+          <span class="tag">Gifts</span>
+        </div>
+        <a href="tel:8015447404" class="service-link">Ask us →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🖋️</div>
+        <div class="service-title">Rubber Stamps</div>
+        <div class="service-desc">Notary stamps, signature stamps, address stamps, and embossers — professional-grade and made to last.</div>
+        <div class="service-tags">
+          <span class="tag">Notary</span>
+          <span class="tag">Address</span>
+          <span class="tag">Embosser</span>
+        </div>
+        <a href="tel:8015447404" class="service-link">Order now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section section-white" id="products">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Shop by category</div>
+      <h2 class="section-title">Find the perfect award</h2>
+      <p class="section-sub">We carry a comprehensive catalog of award styles. Browse our showroom or call us to discuss your specific needs.</p>
+    </div>
+
+    <div class="categories-grid">
+      <div class="cat-card">
+        <span class="cat-emoji">🏅</span>
+        <div class="cat-title">Acrylic Awards</div>
+        <div class="cat-desc">Modern, crisp acrylic pieces in a huge variety of shapes. Great for corporate recognition and contemporary aesthetics.</div>
+        <div class="cat-arrow">View catalog →</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">💎</span>
+        <div class="cat-title">Crystal & Glass</div>
+        <div class="cat-desc">Elegant crystal and glass awards that carry real weight and distinction — perfect for executive and lifetime achievement honors.</div>
+        <div class="cat-arrow">View catalog →</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">🥤</span>
+        <div class="cat-title">Engraved Drinkware</div>
+        <div class="cat-desc">Personalized mugs, tumblers, decanters, and glasses — custom engraved for teams, weddings, retirements, and corporate gifts.</div>
+        <div class="cat-arrow">View catalog →</div>
+      </div>
+      <div class="cat-card">
+        <span class="cat-emoji">🪪</span>
+        <div class="cat-title">Plaques</div>
+        <div class="cat-desc">Engraved plaques for every occasion — mission homecomings, retirements, service recognition, and memorial tributes.</div>
+        <div class="cat-arrow">View catalog →</div>
+      </div>
+    </div>
+
+    <!-- What we engrave -->
+    <div style="margin-top: 3rem;">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">What we can engrave</div>
+      <div class="engrave-list">
+        <div class="engrave-item"><span class="engrave-bullet"></span>Metal & steel plates</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Plastic & acrylic</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Wood & hardwoods</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Glass & crystal</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Silver & pewter</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Stone & rock</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Drinkware & mugs</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Waffle irons & appliances</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Fishing lures & gear</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Jewelry & keepsakes</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>Trophies & statues</div>
+        <div class="engrave-item"><span class="engrave-bullet"></span>…and much more</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION PLAQUE CTA -->
+<section class="mission-section" id="mission">
+  <div class="mission-inner">
+    <div>
+      <div class="mission-label">LDS Mission Plaques</div>
+      <h2 class="mission-title">Welcoming your missionary home?</h2>
+      <p class="mission-desc">Celebrate their service with a beautifully engraved custom mission plaque. We've been creating these meaningful keepsakes for Utah families for decades — just fill out our easy order form and we'll take care of the rest.</p>
+    </div>
+    <div class="mission-action">
+      <a href="https://www.utahstrophyshop.com/missionplaques/" class="btn-navy" target="_blank">Order a Mission Plaque →</a>
+      <p class="mission-note">Or call us at 801-544-7404</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section section-cream" id="about">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text">
+        <div class="section-eyebrow">Our story</div>
+        <h2 class="section-title">More than a trophy shop — we love what we do.</h2>
+        <p><strong>Gold Star Awards & Engraving has been part of the Wasatch Front community since 1985.</strong> Our showroom in Layton is stocked with an extraordinary variety of awards, gifts, and keepsakes — and we take real pride in every piece that leaves our shop.</p>
+        <p>On any given week we might be crafting trophies for a youth soccer league, engraving a retirement plaque for a 30-year employee, laser-engraving a set of custom rocks for the Utah Highway Patrol, or personalizing waffle irons for a creative ad agency. The variety keeps us energized — and the results keep our customers coming back.</p>
+        <p>We have customers who drive past other shops all the way from Salt Lake City because they trust us to get it right. <strong>Rush service is always available,</strong> and we treat every order — large or small — with the same care.</p>
+        <div class="story-stats">
+          <div class="story-stat">
+            <div class="story-stat-num">1985</div>
+            <div class="story-stat-label">Year established in Layton, Utah</div>
+          </div>
+          <div class="story-stat">
+            <div class="story-stat-num">4.6<sup>★</sup></div>
+            <div class="story-stat-label">Star rating across 36 reviews</div>
+          </div>
+          <div class="story-stat">
+            <div class="story-stat-num">20<sup>+</sup></div>
+            <div class="story-stat-label">Team members serving you</div>
+          </div>
+          <div class="story-stat">
+            <div class="story-stat-num">∞</div>
+            <div class="story-stat-label">Things we can engrave</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-visual">
+        <div class="story-card-stack">
+          <div class="story-main-card">
+            <div class="story-card-eyebrow">Gold Star Promise</div>
+            <div class="story-card-quote">"Awards and engraving that are always done right and on time."</div>
+            <div class="story-card-items">
+              <div class="story-card-item"><span class="story-card-check">✓</span>In-house laser & machine engraving</div>
+              <div class="story-card-item"><span class="story-card-check">✓</span>Rush turnaround always available</div>
+              <div class="story-card-item"><span class="story-card-check">✓</span>Bulk corporate orders welcome</div>
+              <div class="story-card-item"><span class="story-card-check">✓</span>Wheelchair accessible showroom</div>
+              <div class="story-card-item"><span class="story-card-check">✓</span>Accepts all major credit cards</div>
+              <div class="story-card-item"><span class="story-card-check">✓</span>Personalized service, every time</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-white">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">What customers say</div>
+      <h2 class="section-title">Trusted by Utah families<br>& businesses</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"I am so impressed by the service and quality received from Gold Star Awards and Engraving. I purchased a glass decanter set for my husband and Gold Star did an incredible job."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">K</div>
+          Verified Customer · Layton, UT
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"Very helpful staff and a lovely display of trophies and gift ideas. Great selection and they helped me find exactly what I was looking for."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">M</div>
+          Verified Customer · Davis County
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <div class="testimonial-text">"We have customers who drive from way down south past other shops in Salt Lake City to bring their jobs to Gold Star. That says everything about the quality and trust they've built."</div>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">R</div>
+          Repeat Customer · Salt Lake City
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section section-cream" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Visit us</div>
+      <h2 class="section-title">Come see us in Layton</h2>
+      <p class="section-sub">Our showroom is open Monday through Friday. Walk-ins welcome — or call ahead to discuss your order.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div>
+        <div class="contact-card">
+          <h3>Contact Information</h3>
+          <div class="contact-row">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <a href="tel:8015447404">801-544-7404</a><br>
+              <span style="font-size:12px;">Fax: 801-444-1244</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <a href="https://maps.google.com/?q=55+E+Gentile+St+Layton+UT+84041" target="_blank">
+                55 E. Gentile Street<br>Layton, UT 84041
+              </a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">♿</div>
+            <div class="contact-detail">Wheelchair accessible · Accepts credit cards</div>
+          </div>
+          <div class="contact-row">
+            <div class="contact-icon">⚡</div>
+            <div class="contact-detail">Rush service is always available — just ask.</div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <h3>Business Hours</h3>
+          <div class="hours-table">
+            <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">9:00 AM – 5:30 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">9:00 AM – 5:30 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">9:00 AM – 5:30 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">9:00 AM – 5:30 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">9:00 AM – 5:30 PM</span></div>
+            <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-closed">Closed</span></div>
+            <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-closed">Closed</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="map-embed">
+          <div class="map-placeholder">
+            <div style="font-size:40px;">🗺️</div>
+            <p>55 E. Gentile Street<br>Layton, UT 84041</p>
+            <a href="https://maps.google.com/?q=55+E+Gentile+St+Layton+UT+84041" target="_blank">
+              Open in Google Maps →
+            </a>
+          </div>
+        </div>
+
+        <div style="margin-top:1rem; background:var(--navy); border-radius:var(--r-xl); padding:2rem; text-align:center;">
+          <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-light);margin-bottom:0.75rem;font-weight:500;">Ready to order?</div>
+          <div style="font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:0.5rem;">Call us today</div>
+          <a href="tel:8015447404" style="font-size:28px;font-family:'Playfair Display',serif;color:var(--gold-light);text-decoration:none;display:block;margin-bottom:1.25rem;font-weight:600;">801-544-7404</a>
+          <p style="font-size:13px;font-weight:300;color:rgba(255,255,255,0.5);line-height:1.7;">Walk-ins welcome · Rush orders accepted<br>Showroom open Mon–Fri, 9am–5:30pm</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">⭐ Gold Star <span>Awards</span></div>
+        <div style="font-size:12px;font-weight:300;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;margin-top:2px;">Utah's Trophy Shop</div>
+        <p>Awards, engraving, and recognition products done right and on time — serving the Wasatch Front with pride since 1985.</p>
+        <span class="footer-since">Est. 1985 · Layton, Utah</span>
+      </div>
+
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#">Acrylic Awards</a>
+        <a href="#">Crystal & Glass</a>
+        <a href="#">Drinkware</a>
+        <a href="#">Trophies & Medals</a>
+        <a href="#">Plaques</a>
+        <a href="#">Rubber Stamps</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="https://www.utahstrophyshop.com/missionplaques/" target="_blank">Mission Plaques</a>
+        <a href="#">Signage & Banners</a>
+        <a href="#">Promotional Products</a>
+        <a href="tel:8015447404">Contact Us</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Gold Star Awards & Engraving · Utah's Trophy Shop · 55 E. Gentile St, Layton UT 84041</p>
+      <p>📞 <a href="tel:8015447404" style="color:rgba(255,255,255,0.35);text-decoration:none;">801-544-7404</a> · Fax 801-444-1244</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const h = document.getElementById('hamburger');
+    const m = document.getElementById('mobileNav');
+    h.classList.toggle('open');
+    m.classList.toggle('open');
+    document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('mobileNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        closeMenu();
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+      }
+    });
+  });
+
+  // Intersection observer for fade-up elements
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .cat-card, .testimonial-card, .story-stat, .engrave-item').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = `opacity 0.5s ease ${i * 0.05}s, transform 0.5s ease ${i * 0.05}s`;
+    observer.observe(el);
+  });
+
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .cat-card, .testimonial-card, .story-stat, .engrave-item').forEach(el => {
+    cardObserver.observe(el);
+  });
+</script>
+
+</body>
+</html>
